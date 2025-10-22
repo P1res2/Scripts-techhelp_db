@@ -16,8 +16,8 @@ END
 
 -- Inserir dados iniciais
 INSERT INTO especialidades (nome, descricao) VALUES 
-('Hardware', 'Manuten��o e reparo de componentes f�sicos de computadores'),
-('Software', 'Instala��o, configura��o e troubleshooting de software'),
-('Redes', 'Configura��o e solu��o de problemas de redes'),
-('Seguran�a', 'Implementa��o e manuten��o de sistemas de seguran�a'),
-('Sistemas Operacionais', 'Instala��o e configura��o de sistemas operacionais');
+('Hardware', 'Manuten��o e reparo de componentes f�sicos de computadores'), -- id = 1
+('Software', 'Instala��o, configura��o e troubleshooting de software'), -- id = 2
+('Redes', 'Configura��o e solu��o de problemas de redes'), -- id = 3
+('Seguran�a', 'Implementa��o e manuten��o de sistemas de seguran�a'), -- id = 4
+('Sistemas Operacionais', 'Instala��o e configura��o de sistemas operacionais'); -- id = 5

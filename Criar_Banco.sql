@@ -6,4 +6,4 @@ END
 ELSE
 BEGIN
     PRINT 'Banco techhelp_db já existe!';
-END
+END;
