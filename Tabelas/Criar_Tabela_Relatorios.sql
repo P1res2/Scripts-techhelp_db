@@ -14,10 +14,10 @@ BEGIN
         tipo_problema VARCHAR(100),
         quantidade_chamados INT DEFAULT 0,
         tempo_medio_resolucao TIME,
-        created_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE()
     );
 
-    -- Índices
+    -- ï¿½ndices
     CREATE INDEX idx_mes_referencia ON dbo.relatorios (mes_referencia);
     CREATE INDEX idx_cliente ON dbo.relatorios (id_cliente);
     CREATE INDEX idx_tecnico ON dbo.relatorios (id_tecnico);
@@ -33,5 +33,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela relatorios já existe!';
+    PRINT 'A tabela relatorios jï¿½ existe!';
 END;

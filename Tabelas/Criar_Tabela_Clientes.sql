@@ -6,11 +6,11 @@ BEGIN
         id_cliente INT IDENTITY(1,1) PRIMARY KEY,
         nome_razao VARCHAR(100) NOT NULL,
         cpf_cnpj VARCHAR(20) NOT NULL UNIQUE,
-        tipo VARCHAR(10) CHECK (tipo IN ('Física', 'Jurídica')) NOT NULL,
+        tipo VARCHAR(10) CHECK (tipo IN ('Fï¿½sica', 'Jurï¿½dica')) NOT NULL,
         email VARCHAR(100) NOT NULL,
         telefone VARCHAR(20) NOT NULL,
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_cpf_cnpj ON clientes (cpf_cnpj);
@@ -18,5 +18,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela clientes já existe!';
+    PRINT 'A tabela clientes jï¿½ existe!';
 END

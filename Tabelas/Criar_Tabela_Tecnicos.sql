@@ -9,8 +9,8 @@ BEGIN
         telefone VARCHAR(20) NOT NULL,
         senha VARCHAR(255) NOT NULL,
         ativo BIT DEFAULT 1, 
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_email ON tecnicos (email);
@@ -19,5 +19,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela tecnicos já existe!';
+    PRINT 'A tabela tecnicos jï¿½ existe!';
 END

@@ -9,13 +9,13 @@ BEGIN
     CREATE TABLE contratos (
         id_contrato INT IDENTITY(1,1) PRIMARY KEY, 
         id_cliente INT NOT NULL,
-        tipo_cobranca VARCHAR(20) CHECK (tipo_cobranca IN ('Chamado', 'Hora Técnica', 'Mensal')) NOT NULL, 
+        tipo_cobranca VARCHAR(20) CHECK (tipo_cobranca IN ('Chamado', 'Hora Tï¿½cnica', 'Mensal')) NOT NULL, 
         data_inicio DATE NOT NULL,
         data_fim DATE NULL,
         valor DECIMAL(10,2) NULL,
         descricao VARCHAR(MAX) NULL, 
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE(),
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE(),
         CONSTRAINT FK_contrato_cliente FOREIGN KEY (id_cliente) 
             REFERENCES clientes(id_cliente) ON DELETE CASCADE
     );
@@ -25,5 +25,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela contratos já existe!';
+    PRINT 'A tabela contratos jï¿½ existe!';
 END

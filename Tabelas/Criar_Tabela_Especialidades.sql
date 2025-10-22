@@ -6,18 +6,18 @@ BEGIN
         id_especialidade INT IDENTITY(1,1) PRIMARY KEY,
         nome VARCHAR(50) NOT NULL UNIQUE,
         descricao VARCHAR(MAX),
-        created_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE()
     );
 END
 ELSE
 BEGIN
-    PRINT 'A tabela especialidades já existe!';
+    PRINT 'A tabela especialidades jï¿½ existe!';
 END
 
 -- Inserir dados iniciais
 INSERT INTO especialidades (nome, descricao) VALUES 
-('Hardware', 'Manutenção e reparo de componentes físicos de computadores'),
-('Software', 'Instalação, configuração e troubleshooting de software'),
-('Redes', 'Configuração e solução de problemas de redes'),
-('Segurança', 'Implementação e manutenção de sistemas de segurança'),
-('Sistemas Operacionais', 'Instalação e configuração de sistemas operacionais');
+('Hardware', 'Manutenï¿½ï¿½o e reparo de componentes fï¿½sicos de computadores'),
+('Software', 'Instalaï¿½ï¿½o, configuraï¿½ï¿½o e troubleshooting de software'),
+('Redes', 'Configuraï¿½ï¿½o e soluï¿½ï¿½o de problemas de redes'),
+('Seguranï¿½a', 'Implementaï¿½ï¿½o e manutenï¿½ï¿½o de sistemas de seguranï¿½a'),
+('Sistemas Operacionais', 'Instalaï¿½ï¿½o e configuraï¿½ï¿½o de sistemas operacionais');

@@ -5,7 +5,7 @@ BEGIN
     CREATE TABLE tecnico_especialidades (
         id_tecnico INT NOT NULL,
         id_especialidade INT NOT NULL,
-        created_at DATETIME DEFAULT GETDATE(),
+        created_at DATETIME2 DEFAULT GETDATE(),
         CONSTRAINT PK_tecnico_especialidades PRIMARY KEY (id_tecnico, id_especialidade),
         CONSTRAINT FK_tecnico FOREIGN KEY (id_tecnico) 
             REFERENCES tecnicos(id_tecnico) ON DELETE CASCADE,
@@ -15,5 +15,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela tecnico_especialidades já existe!';
+    PRINT 'A tabela tecnico_especialidades jï¿½ existe!';
 END

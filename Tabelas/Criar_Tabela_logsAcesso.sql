@@ -10,7 +10,7 @@ BEGIN
         id_log INT IDENTITY(1,1) PRIMARY KEY,
         usuario VARCHAR(100) NULL,
         acao VARCHAR(200) NULL,
-        data_hora DATETIME DEFAULT GETDATE(),
+        data_hora DATETIME2 DEFAULT GETDATE(),
         ip VARCHAR(45) NULL,
         user_agent NVARCHAR(MAX) NULL
     );
@@ -20,5 +20,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela logs_acesso já existe!';
+    PRINT 'A tabela logs_acesso jï¿½ existe!';
 END;

@@ -9,7 +9,7 @@ BEGIN
         id_chamado INT NOT NULL UNIQUE,
         nota INT CHECK (nota BETWEEN 1 AND 5),
         comentario NVARCHAR(MAX),
-        data_avaliacao DATETIME DEFAULT GETDATE()
+        data_avaliacao DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_chamado ON dbo.avaliacoes (id_chamado);
@@ -21,5 +21,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela avaliacoes já existe!';
+    PRINT 'A tabela avaliacoes jï¿½ existe!';
 END;

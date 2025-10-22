@@ -11,11 +11,11 @@ BEGIN
         id_cliente INT IDENTITY(1,1) PRIMARY KEY,
         nome_razao VARCHAR(100) NOT NULL,
         cpf_cnpj VARCHAR(20) NOT NULL UNIQUE,
-        tipo VARCHAR(10) CHECK (tipo IN ('Física', 'Jurídica')) NOT NULL,
+        tipo VARCHAR(10) CHECK (tipo IN ('Fï¿½sica', 'Jurï¿½dica')) NOT NULL,
         email VARCHAR(100) NOT NULL,
         telefone VARCHAR(20) NOT NULL,
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_cpf_cnpj ON clientes (cpf_cnpj);
@@ -23,7 +23,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela clientes já existe!';
+    PRINT 'A tabela clientes jï¿½ existe!';
 END
 
 
@@ -37,8 +37,8 @@ BEGIN
         telefone VARCHAR(20) NOT NULL,
         senha VARCHAR(255) NOT NULL,
         ativo BIT DEFAULT 1, 
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_email ON tecnicos (email);
@@ -47,7 +47,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela tecnicos já existe!';
+    PRINT 'A tabela tecnicos jï¿½ existe!';
 END
 
 
@@ -65,18 +65,18 @@ BEGIN
         titulo NVARCHAR(200) NOT NULL,
         descricao NVARCHAR(MAX) NOT NULL,
 
-        prioridade NVARCHAR(10) DEFAULT 'Média' CHECK (prioridade IN ('Baixa', 'Média', 'Alta', 'Crítica')),
+        prioridade NVARCHAR(10) DEFAULT 'Mï¿½dia' CHECK (prioridade IN ('Baixa', 'Mï¿½dia', 'Alta', 'Crï¿½tica')),
         status NVARCHAR(20) DEFAULT 'Aberto' CHECK (status IN ('Aberto', 'Em Andamento', 'Aguardando Cliente', 'Resolvido', 'Fechado')),
         tipo_atendimento NVARCHAR(20) NOT NULL CHECK (tipo_atendimento IN ('Remoto', 'Presencial')),
-        categoria NVARCHAR(20) NOT NULL CHECK (categoria IN ('Hardware', 'Software', 'Redes', 'Segurança', 'Outros')),
+        categoria NVARCHAR(20) NOT NULL CHECK (categoria IN ('Hardware', 'Software', 'Redes', 'Seguranï¿½a', 'Outros')),
 
-        data_abertura DATETIME DEFAULT GETDATE(),
-        data_fechamento DATETIME NULL,
+        data_abertura DATETIME2 DEFAULT GETDATE(),
+        data_fechamento DATETIME2 NULL,
         tempo_resolucao TIME NULL,
         sla_maximo TIME NULL,
 
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_cliente ON dbo.chamados (id_cliente);
@@ -95,7 +95,7 @@ BEGIN
 END;
 ELSE
 BEGIN
-    PRINT 'A tabela chamados já existe!';
+    PRINT 'A tabela chamados jï¿½ existe!';
 END
 
 
@@ -106,12 +106,12 @@ BEGIN
         id_especialidade INT IDENTITY(1,1) PRIMARY KEY,
         nome VARCHAR(50) NOT NULL UNIQUE,
         descricao VARCHAR(MAX),
-        created_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE()
     );
 END
 ELSE
 BEGIN
-    PRINT 'A tabela especialidades já existe!';
+    PRINT 'A tabela especialidades jï¿½ existe!';
 END
 
 
@@ -119,51 +119,51 @@ END
 IF NOT EXISTS (SELECT 1 FROM especialidades WHERE nome = 'Hardware')
 BEGIN
     INSERT INTO especialidades (nome, descricao)
-    VALUES ('Hardware', 'Manutenção e reparo de componentes físicos de computadores');
+    VALUES ('Hardware', 'Manutenï¿½ï¿½o e reparo de componentes fï¿½sicos de computadores');
 END
 ELSE
 BEGIN
-    PRINT('O item Hardware já existe!');
+    PRINT('O item Hardware jï¿½ existe!');
 END
 
 IF NOT EXISTS (SELECT 1 FROM especialidades WHERE nome = 'Software')
 BEGIN
     INSERT INTO especialidades (nome, descricao)
-    VALUES ('Software', 'Instalação, configuração e troubleshooting de software');
+    VALUES ('Software', 'Instalaï¿½ï¿½o, configuraï¿½ï¿½o e troubleshooting de software');
 END
 ELSE
 BEGIN
-    PRINT('O item Software já existe!');
+    PRINT('O item Software jï¿½ existe!');
 END
 
 IF NOT EXISTS (SELECT 1 FROM especialidades WHERE nome = 'Redes')
 BEGIN
     INSERT INTO especialidades (nome, descricao)
-    VALUES ('Redes', 'Configuração e solução de problemas de redes');
+    VALUES ('Redes', 'Configuraï¿½ï¿½o e soluï¿½ï¿½o de problemas de redes');
 END
 ELSE
 BEGIN
-    PRINT('O item Redes já existe!');
+    PRINT('O item Redes jï¿½ existe!');
 END
 
-IF NOT EXISTS (SELECT 1 FROM especialidades WHERE nome = 'Segurança')
+IF NOT EXISTS (SELECT 1 FROM especialidades WHERE nome = 'Seguranï¿½a')
 BEGIN
     INSERT INTO especialidades (nome, descricao)
-    VALUES ('Segurança', 'Implementação e manutenção de sistemas de segurança');
+    VALUES ('Seguranï¿½a', 'Implementaï¿½ï¿½o e manutenï¿½ï¿½o de sistemas de seguranï¿½a');
 END
 ELSE
 BEGIN
-    PRINT('O item Segurança já existe!');
+    PRINT('O item Seguranï¿½a jï¿½ existe!');
 END
 
 IF NOT EXISTS (SELECT 1 FROM especialidades WHERE nome = 'Sistemas Operacionais')
 BEGIN
     INSERT INTO especialidades (nome, descricao)
-    VALUES ('Sistemas Operacionais', 'Instalação e configuração de sistemas operacionais');
+    VALUES ('Sistemas Operacionais', 'Instalaï¿½ï¿½o e configuraï¿½ï¿½o de sistemas operacionais');
 END
 ELSE
 BEGIN
-    PRINT('O item Sistemas Operacionais já existe!');
+    PRINT('O item Sistemas Operacionais jï¿½ existe!');
 END
 
 
@@ -177,12 +177,12 @@ BEGIN
     CREATE TABLE dbo.atendimentos (
         id_atendimento INT IDENTITY(1,1) PRIMARY KEY,
         id_chamado INT NOT NULL,
-        data_inicio DATETIME NOT NULL,
-        data_fim DATETIME NULL,
+        data_inicio DATETIME2 NOT NULL,
+        data_fim DATETIME2 NULL,
         descricao NVARCHAR(MAX),
         solucao NVARCHAR(MAX),
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_chamado ON dbo.atendimentos (id_chamado);
@@ -194,17 +194,17 @@ BEGIN
 END;
 ELSE
 BEGIN
-    PRINT 'A tabela atendimentos já existe!';
+    PRINT 'A tabela atendimentos jï¿½ existe!';
 END
 
 
--- Criando tabela de relação de tecnicos e especialidades
+-- Criando tabela de relaï¿½ï¿½o de tecnicos e especialidades
 IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'tecnico_especialidades' AND schema_id = SCHEMA_ID('dbo'))
 BEGIN
     CREATE TABLE tecnico_especialidades (
         id_tecnico INT NOT NULL,
         id_especialidade INT NOT NULL,
-        created_at DATETIME DEFAULT GETDATE(),
+        created_at DATETIME2 DEFAULT GETDATE(),
         CONSTRAINT PK_tecnico_especialidades PRIMARY KEY (id_tecnico, id_especialidade),
         CONSTRAINT FK_tecnico FOREIGN KEY (id_tecnico) 
             REFERENCES tecnicos(id_tecnico) ON DELETE CASCADE,
@@ -214,7 +214,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela tecnico_especialidades já existe!';
+    PRINT 'A tabela tecnico_especialidades jï¿½ existe!';
 END
 
 
@@ -228,13 +228,13 @@ BEGIN
     CREATE TABLE contratos (
         id_contrato INT IDENTITY(1,1) PRIMARY KEY, 
         id_cliente INT NOT NULL,
-        tipo_cobranca VARCHAR(20) CHECK (tipo_cobranca IN ('Chamado', 'Hora Técnica', 'Mensal')) NOT NULL, 
+        tipo_cobranca VARCHAR(20) CHECK (tipo_cobranca IN ('Chamado', 'Hora Tï¿½cnica', 'Mensal')) NOT NULL, 
         data_inicio DATE NOT NULL,
         data_fim DATE NULL,
         valor DECIMAL(10,2) NULL,
         descricao VARCHAR(MAX) NULL, 
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE(),
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE(),
         CONSTRAINT FK_contrato_cliente FOREIGN KEY (id_cliente) 
             REFERENCES clientes(id_cliente) ON DELETE CASCADE
     );
@@ -244,11 +244,11 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela contratos já existe!';
+    PRINT 'A tabela contratos jï¿½ existe!';
 END
 
 
--- Criando tabela avaliações
+-- Criando tabela avaliaï¿½ï¿½es
 IF NOT EXISTS (
     SELECT 1 FROM sys.tables 
     WHERE name = 'avaliacoes' 
@@ -260,7 +260,7 @@ BEGIN
         id_chamado INT NOT NULL UNIQUE,
         nota INT CHECK (nota BETWEEN 1 AND 5),
         comentario NVARCHAR(MAX),
-        data_avaliacao DATETIME DEFAULT GETDATE()
+        data_avaliacao DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_chamado ON dbo.avaliacoes (id_chamado);
@@ -272,7 +272,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela avaliacoes já existe!';
+    PRINT 'A tabela avaliacoes jï¿½ existe!';
 END;
 
 
@@ -291,7 +291,7 @@ BEGIN
         tipo_problema VARCHAR(100),
         quantidade_chamados INT DEFAULT 0,
         tempo_medio_resolucao TIME,
-        created_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_mes_referencia ON dbo.relatorios (mes_referencia);
@@ -308,7 +308,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela relatorios já existe!';
+    PRINT 'A tabela relatorios jï¿½ existe!';
 END;
 
 
@@ -323,7 +323,7 @@ BEGIN
         id_log INT IDENTITY(1,1) PRIMARY KEY,
         usuario VARCHAR(100) NULL,
         acao VARCHAR(200) NULL,
-        data_hora DATETIME DEFAULT GETDATE(),
+        data_hora DATETIME2 DEFAULT GETDATE(),
         ip VARCHAR(45) NULL,
         user_agent NVARCHAR(MAX) NULL
     );
@@ -333,5 +333,5 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'A tabela logs_acesso já existe!';
+    PRINT 'A tabela logs_acesso jï¿½ existe!';
 END;

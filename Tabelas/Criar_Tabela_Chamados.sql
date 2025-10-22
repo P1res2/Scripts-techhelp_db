@@ -13,18 +13,18 @@ BEGIN
         titulo NVARCHAR(200) NOT NULL,
         descricao NVARCHAR(MAX) NOT NULL,
 
-        prioridade NVARCHAR(10) DEFAULT 'Média' CHECK (prioridade IN ('Baixa', 'Média', 'Alta', 'Crítica')),
+        prioridade NVARCHAR(10) DEFAULT 'Mï¿½dia' CHECK (prioridade IN ('Baixa', 'Mï¿½dia', 'Alta', 'Crï¿½tica')),
         status NVARCHAR(20) DEFAULT 'Aberto' CHECK (status IN ('Aberto', 'Em Andamento', 'Aguardando Cliente', 'Resolvido', 'Fechado')),
         tipo_atendimento NVARCHAR(20) NOT NULL CHECK (tipo_atendimento IN ('Remoto', 'Presencial')),
-        categoria NVARCHAR(20) NOT NULL CHECK (categoria IN ('Hardware', 'Software', 'Redes', 'Segurança', 'Outros')),
+        categoria NVARCHAR(20) NOT NULL CHECK (categoria IN ('Hardware', 'Software', 'Redes', 'Seguranï¿½a', 'Outros')),
 
-        data_abertura DATETIME DEFAULT GETDATE(),
-        data_fechamento DATETIME NULL,
+        data_abertura DATETIME2 DEFAULT GETDATE(),
+        data_fechamento DATETIME2 NULL,
         tempo_resolucao TIME NULL,
         sla_maximo TIME NULL,
 
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_cliente ON dbo.chamados (id_cliente);
@@ -43,5 +43,5 @@ BEGIN
 END;
 ELSE
 BEGIN
-    PRINT 'A tabela chamados já existe!';
+    PRINT 'A tabela chamados jï¿½ existe!';
 END

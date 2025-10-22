@@ -9,12 +9,12 @@ BEGIN
     CREATE TABLE dbo.atendimentos (
         id_atendimento INT IDENTITY(1,1) PRIMARY KEY,
         id_chamado INT NOT NULL,
-        data_inicio DATETIME NOT NULL,
-        data_fim DATETIME NULL,
+        data_inicio DATETIME2 NOT NULL,
+        data_fim DATETIME2 NULL,
         descricao NVARCHAR(MAX),
         solucao NVARCHAR(MAX),
-        created_at DATETIME DEFAULT GETDATE(),
-        updated_at DATETIME DEFAULT GETDATE()
+        created_at DATETIME2 DEFAULT GETDATE(),
+        updated_at DATETIME2 DEFAULT GETDATE()
     );
 
     CREATE INDEX idx_chamado ON dbo.atendimentos (id_chamado);
@@ -26,5 +26,5 @@ BEGIN
 END;
 ELSE
 BEGIN
-    PRINT 'A tabela atendimentos já existe!';
+    PRINT 'A tabela atendimentos jï¿½ existe!';
 END
